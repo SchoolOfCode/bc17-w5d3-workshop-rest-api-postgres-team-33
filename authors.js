@@ -10,6 +10,9 @@ export async function getAuthors() {
 
 export async function getAuthorById(id) {
   // Query the database and return the author with a matching id or null
+  const queryText = "SELECT * FROM authors WHERE id = '$1";
+  const results = await pool.query(queryText, [id]);
+  return results.row[0] || null;
 }
 
 export async function createAuthor(author) {
