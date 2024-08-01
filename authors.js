@@ -8,11 +8,11 @@ export async function getAuthors() {
   return results.rows;
 }
 
-export async function getAuthorById(id) {
+export async function getAuthorById(id,) {
   // Query the database and return the author with a matching id or null
-  const queryText = "SELECT * FROM authors WHERE id = '$1";
+  const queryText = "SELECT * FROM authors WHERE id = $1";
   const results = await pool.query(queryText, [id]);
-  return results.row[0] || null;
+  return results.rows[0] || null;
 }
 
 export async function createAuthor(author) {
